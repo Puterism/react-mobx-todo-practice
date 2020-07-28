@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'mobx-react';
+import 'mobx-react-lite/batchingForReactDom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import TodoStore from 'stores/todo'
+
+const todo = new TodoStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider todo={todo}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
